@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
-import React from 'react';
+// import React from 'react';
 import { ToggleOverlay } from '../../redux/actions/toggleOverlay'
-import * as styled from './CharacterStyling'
+import * as styled from '../../styles/pages/EpisodeStyling'
 import { useRouter } from 'next/router'
 import { GetSingleCharacter } from '../../redux/actions/getSingleCharacter'
 import Loading from '../../components/loading';
