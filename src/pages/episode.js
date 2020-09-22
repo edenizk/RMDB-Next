@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 // import React from 'react';
-import { ToggleOverlay } from '../../redux/actions/toggleOverlay'
-import * as styled from '../../styles/pages/EpisodeStyling'
+import { ToggleOverlay } from '../redux/actions/toggleOverlay'
+import * as styled from '../styles/pages/EpisodeStyling'
 import { useRouter } from 'next/router'
-import { GetSingleCharacter } from '../../redux/actions/getSingleCharacter'
-import Loading from '../../components/loading';
+import { GetSingleCharacter } from '../redux/actions/getSingleCharacter'
+import Loading from '../components/loading';
 
-const Character = (props) => {
+export const Episode = (props) => {
   const dispatch = useDispatch();
   const char = useSelector(state => state.dataReducer.character).character
   // const episodes = char.episode
@@ -49,5 +49,3 @@ const Character = (props) => {
     </styled.Container>
   )
 }
-
-export default Character;

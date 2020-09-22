@@ -1,24 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux'
 // import React from 'react';
 import { ToggleOverlay } from '../../redux/actions/toggleOverlay'
-import * as styled from '../../styles/pages/CharacterStyling'
+import * as styled from './CharacterStyling'
 import { useRouter } from 'next/router'
 import { GetSingleCharacter } from '../../redux/actions/getSingleCharacter'
-import Loading from '../../components/loading';
 import Link from 'next/link'
 import { useEffect } from 'react';
 
-function Character() {
+export const Character = () => {
   const router = useRouter()
   const { charid } = router.query
   const dispatch = useDispatch();
   let char;
   let episodes;
   useEffect(() => {
-    // console.log('called once')
+    console.log('called once')
     if (charid)
       dispatch(GetSingleCharacter(charid))
   });
+
+  const overlay = useSelector(state => state.UIReducer.overlayCard)
+  const loading = useSelector(state => state.UIReducer.loading)
 
   if (char === undefined)
     char = useSelector(state => state.dataReducer.character).character
@@ -26,16 +28,15 @@ function Character() {
     episodes = useSelector(state => state.dataReducer.episodes)
   // console.log("char", char)
 
-
-  if (charid === undefined) return <Loading></Loading>
-
   const toggleOverlay = () => {
-    dispatch(ToggleOverlay({overlay: false}))
+    // dispatch(ToggleOverlay({overlay: false}))
   }
   // console.log("episodes", episodes)
-
   return ( 
-    char === undefined ? <Loading></Loading> :
+    char === undefined ?           
+    <styled.Loading>
+      <styled.GetSchwify></styled.GetSchwify>
+    </styled.Loading> :
     <styled.Container className="test_container">
       <Link href="/"><styled.Button>X</styled.Button></Link>
       <styled.Image src={char.image} alt={char.name}></styled.Image>
@@ -69,5 +70,3 @@ function Character() {
 
 //   return { char, episodes }
 // }
-
-export default Character;

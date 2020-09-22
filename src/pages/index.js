@@ -4,9 +4,9 @@ import styled from 'styled-components'
 // import { myTheme } from '../styles/main'
 import { useDispatch, useSelector } from 'react-redux'
 import { InitData } from '../redux/actions/initData';
-import Loading from '../components/loading';
+import { Loading } from '../components/loading';
 import { useEffect } from 'react';
-import Cards from '../components/cards';
+import { Cards } from '../components/cards';
 
 const MyMain = styled.main` 
   padding: 5rem 0;
